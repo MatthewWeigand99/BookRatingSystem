@@ -49,9 +49,15 @@ public class KiloConverter extends JFrame {
 
             input = kiloTextField.getText();
 
+            //DEBUGGING
+            System.out.println("Reading " + input + " from the text field.");
+            System.out.println("Converted value: " + Double.parseDouble(input));
+
             miles = CONVERSION * Double.parseDouble(input);
 
             JOptionPane.showMessageDialog(null, input + " kilometers is " + miles + " miles.");
+            //DEBUGGING
+            System.out.println("Ready for next input.");
         }
     }
 
