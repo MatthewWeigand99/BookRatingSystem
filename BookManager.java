@@ -1,5 +1,10 @@
 import java.util.Scanner;
 import javax.swing.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class BookManager {
     //Database Admin Variables
@@ -18,7 +23,10 @@ public class BookManager {
     final static int WINDOW_HEIGHT = 500;
 
     public static void main(String[] args) {
-        createWindow();
+        //createWindow();
+        System.out.println("Connection test. Enter a table name: ");
+        tableName = scan.nextLine();
+        viewTable(tableName);
     }
 
     public static void createWindow() {
@@ -29,5 +37,26 @@ public class BookManager {
         window.setLocationRelativeTo(null);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setVisible(true);
+    }
+
+    public static void viewTable(String tName) {
+        String query = "select id, firstName, lastName from " + tName;
+
+        try (Connection conn = DriverManager.getConnection(DB_URL, USER, PASSWORD);
+             Statement stmt = conn.createStatement()) {
+
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String fName = rs.getString("firstName");
+                String lName = rs.getString("lastName");
+                
+                System.out.println(id + ", " + fName + ", " + lName);
+            }
+            System.out.println("Finished printing.");
+        }
+        catch (SQLException e) {
+            System.out.println(e);
+        }
     }
 }
