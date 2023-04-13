@@ -1,5 +1,5 @@
-import java.util.Scanner;
-import javax.swing.*;
+ import javax.swing.*;
+import java.awt.event.*;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,40 +7,76 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class BookManager {
-    //Database Admin Variables
-    static final String DB_URL = "jdbc:mysql://localhost:3306/testDB";
-    static final String USER = "root";
-    static final String PASSWORD = "Mia!CompSci99";
+public class BookManager extends JFrame{
 
-    //Scanner inputs
-    static Scanner scan = new Scanner(System.in);
-    static String tableName;
-    static int userInput;
+    //Database Variables
+    private final String DB_URL = "jdbc:mysql://localhost:3306/testDB";
+    private final String USER = "root";
+    private final String PASSWORD = "Mia!CompSci99";
+    private String tableName;
 
     //Window variables
-    final static String TITLE = "Book Manager";
-    final static int WINDOW_WIDTH = 700;
-    final static int WINDOW_HEIGHT = 500;
+    private final String TITLE = "Book Rating System";
+    private final  int WINDOW_WIDTH = 700;
+    private final  int WINDOW_HEIGHT = 500;
+
+    private JPanel panel;
+    private JButton exitButton;
+    private JButton showTableButton;
+    private JLabel messageLabel;
+    private JTextField tableNameField;
+
+    public BookManager() {
+        setTitle(TITLE);
+        setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        buildPanel();
+        add(panel);
+
+        setVisible(true);
+    }
+
+    private void buildPanel() {
+        messageLabel = new JLabel("Please enter a table name:");
+        tableNameField = new JTextField(10);
+        showTableButton = new JButton("Show table");
+        exitButton = new JButton("Exit");
+
+        exitButton.addActionListener(new ExitButtonListener());
+        showTableButton.addActionListener(new ShowTableButtonListener());
+
+        panel = new JPanel();
+        panel.add(messageLabel);
+        panel.add(tableNameField);
+        panel.add(showTableButton);
+        panel.add(exitButton);
+    }
 
     public static void main(String[] args) {
-        //createWindow();
+        new BookManager();
+        /*
         System.out.println("Connection test. Enter a table name: ");
         tableName = scan.nextLine();
         viewTable(tableName);
+        */
     }
 
-    public static void createWindow() {
-        JFrame window = new JFrame();
-
-        window.setTitle(TITLE);
-        window.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
-        window.setLocationRelativeTo(null);
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        window.setVisible(true);
+    private class ExitButtonListener implements ActionListener {
+        public void actionPerformed (ActionEvent e) {
+                System.exit(0);
+        }
     }
 
-    public static void viewTable(String tName) {
+    private class ShowTableButtonListener implements ActionListener {
+        public void actionPerformed (ActionEvent e) {
+            tableName = tableNameField.getText();
+            viewTable(tableName);
+        }
+    }
+
+    private void viewTable (String tName) {
         String query = "select id, firstName, lastName from " + tName;
 
         try (Connection conn = DriverManager.getConnection(DB_URL, USER, PASSWORD);
