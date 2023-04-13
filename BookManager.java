@@ -1,11 +1,11 @@
 import javax.swing.*;
 import java.awt.event.*;
 
-import java.sql.Connection;
+/*import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.Statement;*/
 
 public class BookManager extends JFrame{
 
@@ -68,10 +68,12 @@ public class BookManager extends JFrame{
     private class ShowTableButtonListener implements ActionListener {
         public void actionPerformed (ActionEvent e) {
             tableName = tableNameField.getText();
-            viewTable(tableName);
+            ViewTable vt = new ViewTable(DB_URL, USER, PASSWORD);
+ 
+            vt.viewTable(tableName);
         }
     }
-
+    /*
     private void viewTable (String tName) {
         String query = "select id, firstName, lastName from " + tName;
 
@@ -96,4 +98,5 @@ public class BookManager extends JFrame{
             System.out.println(e);
         }
     }
+    */
 }
