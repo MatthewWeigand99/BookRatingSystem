@@ -1,4 +1,4 @@
- import javax.swing.*;
+import javax.swing.*;
 import java.awt.event.*;
 
 import java.sql.Connection;
@@ -56,16 +56,12 @@ public class BookManager extends JFrame{
 
     public static void main(String[] args) {
         new BookManager();
-        /*
-        System.out.println("Connection test. Enter a table name: ");
-        tableName = scan.nextLine();
-        viewTable(tableName);
-        */
     }
 
     private class ExitButtonListener implements ActionListener {
         public void actionPerformed (ActionEvent e) {
                 System.exit(0);
+                System.out.println("Exit.");
         }
     }
 
@@ -83,16 +79,20 @@ public class BookManager extends JFrame{
              Statement stmt = conn.createStatement()) {
 
             ResultSet rs = stmt.executeQuery(query);
+            StringBuffer sb = new StringBuffer();
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String fName = rs.getString("firstName");
                 String lName = rs.getString("lastName");
                 
                 System.out.println(id + ", " + fName + ", " + lName);
+                sb.append(Integer.toString(id) + "," + fName + ", " + lName + "\n");
             }
+            JOptionPane.showMessageDialog(null, sb.toString());
             System.out.println("Finished printing.");
         }
         catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Please enter a valid table name.");
             System.out.println(e);
         }
     }
