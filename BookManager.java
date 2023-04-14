@@ -26,6 +26,7 @@ public class BookManager extends JFrame{
     private JLabel messageLabel;
     private JTextField tableNameField;
     private InsertIntoTable iit;
+    private RemoveFromTable rft;
 
     public BookManager() {
         setTitle(TITLE);
@@ -43,6 +44,7 @@ public class BookManager extends JFrame{
         messageLabel = new JLabel("Please enter a table name:");
         tableNameField = new JTextField(10);
         iit = new InsertIntoTable(DB_URL, USER, PASSWORD);
+        rft = new RemoveFromTable(DB_URL, USER, PASSWORD);
         showTableButton = new JButton("Show table");
         exitButton = new JButton("Exit");
 
@@ -54,6 +56,7 @@ public class BookManager extends JFrame{
         panel.add(tableNameField);
         panel.add(showTableButton);
         panel.add(iit);
+        panel.add(rft);
         panel.add(exitButton);
     }
 
