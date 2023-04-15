@@ -29,7 +29,7 @@ public class BookRater extends JFrame {
         setLayout(new BorderLayout());
 
         gp = new GreetingPanel();
-        abp = new AddBookPanel();
+        abp = new AddBookPanel(DB_URL, USER, PASSWORD, TABLE);
 
         buildPanel();
 
