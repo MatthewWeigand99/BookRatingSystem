@@ -19,6 +19,7 @@ public class BookRater extends JFrame {
     private JPanel centerPanel;
     private GreetingPanel gp;
     private AddBookPanel abp;
+    private RatingsPanel rp;
     private RemoveBookPanel rbp;
     private JButton exitButton;
     private JButton showTableButton;
@@ -34,8 +35,10 @@ public class BookRater extends JFrame {
         centerPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
         abp = new AddBookPanel(DB_URL, USER, PASSWORD, TABLE);
         rbp = new RemoveBookPanel(DB_URL, USER, PASSWORD, TABLE);
+        rp = new RatingsPanel(DB_URL, USER, PASSWORD, TABLE);
         centerPanel.add(abp);
         centerPanel.add(rbp);
+        centerPanel.add(rp);
 
         buildPanel();
 

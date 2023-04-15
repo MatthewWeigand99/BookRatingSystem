@@ -36,7 +36,7 @@ public class TableViewer {
                 float rating = rs.getFloat("book_rating");
                     
                 System.out.println(id + " " + title + " " + author + " " + genre + " " + length + " " + rating);
-                sb.append(Integer.toString(id) + ", " + title + ", " + author + ", " + genre + ", " + length + ", " + Float.toString(rating) + "\n");
+                sb.append(title + ", " + author + ", " + genre + ", " + length + ", " + Float.toString(rating) + "\n");
             }
             JOptionPane.showMessageDialog(null, sb.toString());
             System.out.println("Finished printing.");
