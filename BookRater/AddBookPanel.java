@@ -38,7 +38,7 @@ public class AddBookPanel extends JPanel{
         this.table = table;
 
         bookTitleLabel = new JLabel("Insert book title:");
-        bookTitleTF = new JTextField(30);
+        bookTitleTF = new JTextField(40);
 
         bookAuthorLabel = new JLabel("Insert book author:");
         bookAuthorTF = new JTextField(20);
@@ -86,6 +86,12 @@ public class AddBookPanel extends JPanel{
                     bookGenreTF.getText(), 
                     bookLengthTF.getText(), 
                     Float.parseFloat(bookRatingTF.getText()));
+
+            bookTitleTF.setText("");
+            bookAuthorTF.setText("");
+            bookGenreTF.setText("");
+            bookLengthTF.setText("");
+            bookRatingTF.setText("");
         }
     }
 

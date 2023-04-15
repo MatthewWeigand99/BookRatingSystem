@@ -12,12 +12,14 @@ public class BookRater extends JFrame {
     private final String TABLE = "book_list_user";
 
     private final String TITLE = "Book Rating System";
-    private final  int WINDOW_WIDTH = 600;
-    private final  int WINDOW_HEIGHT = 400;
+    private final  int WINDOW_WIDTH = 1000;
+    private final  int WINDOW_HEIGHT = 600;
 
     private JPanel panel;
+    private JPanel centerPanel;
     private GreetingPanel gp;
     private AddBookPanel abp;
+    private RemoveBookPanel rbp;
     private JButton exitButton;
     private JButton showTableButton;
 
@@ -29,11 +31,15 @@ public class BookRater extends JFrame {
         setLayout(new BorderLayout());
 
         gp = new GreetingPanel();
+        centerPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
         abp = new AddBookPanel(DB_URL, USER, PASSWORD, TABLE);
+        rbp = new RemoveBookPanel(DB_URL, USER, PASSWORD, TABLE);
+        centerPanel.add(abp);
+        centerPanel.add(rbp);
 
         buildPanel();
 
-        add(abp, BorderLayout.CENTER);
+        add(centerPanel, BorderLayout.CENTER);
         add(gp, BorderLayout.NORTH);
         add(panel, BorderLayout.SOUTH);
 
