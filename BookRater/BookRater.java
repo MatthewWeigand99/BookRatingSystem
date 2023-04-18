@@ -20,6 +20,7 @@ public class BookRater extends JFrame {
     private GreetingPanel gp;
     private AddBookPanel abp;
     private RatingsPanel rp;
+    private GenreRatingPanel grp;
     private RemoveBookPanel rbp;
     private JButton exitButton;
     private JButton showTableButton;
@@ -36,9 +37,11 @@ public class BookRater extends JFrame {
         abp = new AddBookPanel(DB_URL, USER, PASSWORD, TABLE);
         rbp = new RemoveBookPanel(DB_URL, USER, PASSWORD, TABLE);
         rp = new RatingsPanel(DB_URL, USER, PASSWORD, TABLE);
+        grp = new GenreRatingPanel(DB_URL, USER, PASSWORD, TABLE);
         centerPanel.add(abp);
         centerPanel.add(rbp);
         centerPanel.add(rp);
+        centerPanel.add(grp);
 
         buildPanel();
 

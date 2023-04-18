@@ -2,13 +2,17 @@ package BookRater;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 import javax.swing.*;
 
 public class TableViewer {
+
+    Connection conn = null;
+    PreparedStatement stmt = null;
+    ResultSet rs = null;
     String dbURL;
     String user;
     String password;
@@ -20,13 +24,13 @@ public class TableViewer {
     }
 
     public void viewTable(String tName) {
-        String query = "select * from " + tName;
+        try {
+            conn = DriverManager.getConnection(dbURL, user, password);
+            stmt = conn.prepareStatement("select * from " + tName);
 
-        try (Connection conn = DriverManager.getConnection(dbURL, user, password);
-            Statement stmt = conn.createStatement()) {
-
-            ResultSet rs = stmt.executeQuery(query);
+            rs = stmt.executeQuery();
             StringBuffer sb = new StringBuffer();
+
             while (rs.next()) {
                 int id = rs.getInt("book_id");
                 String title = rs.getString("book_title");
