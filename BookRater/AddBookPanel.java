@@ -23,8 +23,8 @@ public class AddBookPanel extends JPanel{
     JTextField bookAuthorTF;
     JLabel bookGenreLabel;
     JTextField bookGenreTF;
-    JLabel bookLengthLabel;
-    JTextField bookLengthTF;
+    private BookLengthPanel blp;
+
     JLabel bookRatingLabel;
     JTextField bookRatingTF;
 
@@ -46,8 +46,7 @@ public class AddBookPanel extends JPanel{
         bookGenreLabel = new JLabel("Insert book genre:");
         bookGenreTF = new JTextField(20);
 
-        bookLengthLabel = new JLabel("Insert book length (S, M, L):");
-        bookLengthTF = new JTextField(10);
+        blp = new BookLengthPanel();
 
         bookRatingLabel = new JLabel("Insert book rating:");
         bookRatingTF = new JTextField(10);
@@ -58,7 +57,7 @@ public class AddBookPanel extends JPanel{
         addButton.addActionListener(new AddButtonListener());
 
         setBorder(BorderFactory.createTitledBorder("Add Book"));
-        setLayout(new GridLayout(6, 2));
+        setLayout(new GridLayout(6, 2, 20, 20));
 
         add(bookTitleLabel);
         add(bookTitleTF);
@@ -69,13 +68,11 @@ public class AddBookPanel extends JPanel{
         add(bookGenreLabel);
         add(bookGenreTF);
 
-        add(bookLengthLabel);
-        add(bookLengthTF);
-
         add(bookRatingLabel);
         add(bookRatingTF);
 
-        add(emptyLabel);
+        //add(emptyLabel);
+        add(blp);
         add(addButton);
     }
 
@@ -83,14 +80,13 @@ public class AddBookPanel extends JPanel{
         public void actionPerformed (ActionEvent e) {
             addBook(bookTitleTF.getText(), 
                     bookAuthorTF.getText(), 
-                    bookGenreTF.getText(), 
-                    bookLengthTF.getText(), 
+                    bookGenreTF.getText(),
+                    blp.getLength(),
                     Float.parseFloat(bookRatingTF.getText()));
 
             bookTitleTF.setText("");
             bookAuthorTF.setText("");
             bookGenreTF.setText("");
-            bookLengthTF.setText("");
             bookRatingTF.setText("");
         }
     }
