@@ -1,0 +1,1 @@
+Folder that stores different examples to help with different java applications and how to incorporate SQL databases.
