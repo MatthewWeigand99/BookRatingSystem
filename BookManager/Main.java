@@ -12,12 +12,16 @@ public class Main extends JFrame {
 
     // Main frame variables
     private final String APP_TITLE = "Book Rater";
-    private int appHeight = 600;
-    private int appWidth = 800;
+    private int appHeight = 800;
+    private int appWidth = 1000;
 
     private JPanel panel;
+    private JPanel centerPanel;
+
     private JButton exitButton;
     private JButton showTableButton;
+
+    private AddBookPanel abp;
 
     public Main() {
         setTitle(APP_TITLE);
@@ -26,9 +30,16 @@ public class Main extends JFrame {
         setLocationRelativeTo(null);
         setLayout(new BorderLayout());
 
+        centerPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
+
+        abp = new AddBookPanel(DB_URL, USER, PASSWORD, TABLE);
+
+        centerPanel.add(abp);
+
         buildPanel();
 
         add(panel, BorderLayout.SOUTH);
+        add(centerPanel, BorderLayout.CENTER);
 
         setVisible(true);
     }

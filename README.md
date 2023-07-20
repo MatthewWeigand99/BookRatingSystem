@@ -10,5 +10,8 @@
 
     -TableViewer class
         -Attached to button in main class, when pressed it shows the entire table data about a user's books.
+    
+    -AddBookPanel class
+        -Enter a book's title, author, length, genre, and rating into the MySQL database.
 
 # End Goal?
