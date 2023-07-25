@@ -22,6 +22,7 @@ public class Main extends JFrame {
     private JButton showTableButton;
 
     private AddBookPanel abp;
+    private RemovalPanel rp;
 
     public Main() {
         setTitle(APP_TITLE);
@@ -33,13 +34,15 @@ public class Main extends JFrame {
         centerPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
 
         abp = new AddBookPanel(DB_URL, USER, PASSWORD, TABLE);
+        rp = new RemovalPanel(DB_URL, USER, PASSWORD, TABLE);
 
         centerPanel.add(abp);
+        centerPanel.add(rp);
 
         buildPanel();
 
-        add(panel, BorderLayout.SOUTH);
         add(centerPanel, BorderLayout.CENTER);
+        add(panel, BorderLayout.SOUTH);
 
         setVisible(true);
     }

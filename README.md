@@ -14,4 +14,7 @@
     -AddBookPanel class
         -Enter a book's title, author, length, genre, and rating into the MySQL database.
 
+    -RemovalPanel class
+        -Enter a book's title to remove it from the database.
+
 # End Goal?
