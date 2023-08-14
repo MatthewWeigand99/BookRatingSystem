@@ -23,6 +23,7 @@ public class Main extends JFrame {
 
     private AddBookPanel abp;
     private RemovalPanel rp;
+    private RatingsPanel rating;
 
     public Main() {
         setTitle(APP_TITLE);
@@ -35,9 +36,11 @@ public class Main extends JFrame {
 
         abp = new AddBookPanel(DB_URL, USER, PASSWORD, TABLE);
         rp = new RemovalPanel(DB_URL, USER, PASSWORD, TABLE);
+        rating = new RatingsPanel(DB_URL, USER, PASSWORD, TABLE);
 
         centerPanel.add(abp);
         centerPanel.add(rp);
+        centerPanel.add(rating);
 
         buildPanel();
 
