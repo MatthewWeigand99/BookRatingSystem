@@ -64,6 +64,7 @@ public class Main extends JFrame {
 
     private class ShowTableButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
+            System.out.println("Show table");
             TableViewer tv = new TableViewer(DB_URL, USER, PASSWORD);
             tv.viewTable(TABLE);
         }
