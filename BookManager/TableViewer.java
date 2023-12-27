@@ -30,14 +30,14 @@ public class TableViewer {
             StringBuffer sb = new StringBuffer();
 
             while (rs.next()) {
-                int id = rs.getInt("book_id");
+                //int id = rs.getInt("book_id");
                 String title = rs.getString("book_title");
                 String author = rs.getString("book_author");
                 String genre = rs.getString("book_genre");
                 String length = rs.getString("book_length");
                 float rating = rs.getFloat("book_rating");
                     
-                System.out.println(id + " " + title + " " + author + " " + genre + " " + length + " " + rating);
+                System.out.println(title + " " + author + " " + genre + " " + length + " " + rating);
                 sb.append(title + ", " + author + ", " + genre + ", " + length + ", " + Float.toString(rating) + "\n");
             }
             JOptionPane.showMessageDialog(null, sb.toString());

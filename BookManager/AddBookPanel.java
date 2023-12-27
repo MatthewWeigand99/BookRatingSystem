@@ -40,7 +40,7 @@ public class AddBookPanel extends JPanel {
         bookTitleTF = new JTextField(40);
 
         bookAuthorLabel = new JLabel("Insert book author:");
-        bookAuthorTF = new JTextField(20);
+        bookAuthorTF = new JTextField(40);
 
         bookGenreLabel = new JLabel("Insert book genre:");
         bookGenreTF = new JTextField(20);
